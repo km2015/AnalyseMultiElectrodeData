@@ -1,0 +1,10 @@
+function [iMov,tMov]=findMovArtifacts (E, sr);
+% where E= M x N binary matrix where M is electrodes (E1, E2, ...) and N=TF
+% sr= sampling rate
+S=sum (E,1);
+nE= size (E,1);
+iMov=zeros (1,size(E,2));
+condMov=S==nE;
+iMov(condMov)=1;
+tMov=iMov/sr;
+end
